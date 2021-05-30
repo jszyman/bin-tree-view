@@ -21,10 +21,10 @@ class LeftView:
         if node is not None:
             if self.left_view[lvl] == -1:
                 self.left_view[lvl] = node.val
-                #if node.left is not None:
-                self.create_left_view(node.left, lvl+1)
-                #if node.right is not None:
-                self.create_left_view(node.right, lvl+1)
+            #if node.left is not None:
+            self.create_left_view(node.left, lvl+1)
+            #if node.right is not None:
+            self.create_left_view(node.right, lvl+1)
                 #else:
                     # no left or right child nodes
                 #    pass
@@ -49,5 +49,12 @@ if __name__ == "__main__":
 
     print()
     t3_root = Node(1, Node(2, None, Node(5)), Node(3, Node(6, None, Node(7))))
-    #t3_root = Node(1, Node(2, None, None), Node(3, Node(6, None, Node(7))))
     print(LeftView(t3_root))
+
+    print()
+    t4_root = Node(1, None, Node(3, Node(6, None, Node(7))))
+    print(LeftView(t4_root))
+
+    print()
+    t5_root = Node(1, Node(2), Node(3, Node(6, None, Node(7))))
+    print(LeftView(t5_root))

@@ -14,13 +14,14 @@ class LeftView:
 
     def __init__(self, root_node=None):
         self.root = root_node
-        self.left_view = [-1] * 10
-        self.create_left_view(self.root, 0)
+        self.left_view = []
+        self.create_left_view(self.root, 1)
 
-    def create_left_view(self, node=None, lvl=0):
+    def create_left_view(self, node=None, lvl=1):
         if node is not None:
-            if self.left_view[lvl] == -1:
-                self.left_view[lvl] = node.val
+            # no one inserted value at this level yet
+            if len(self.left_view) < lvl:
+                self.left_view.append(node.val)
             self.create_left_view(node.left, lvl+1)
             self.create_left_view(node.right, lvl+1)
 

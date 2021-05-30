@@ -10,11 +10,30 @@ class Node:
         return f'Node id: {repr(self)}, value: {self.val}, left: {repr(self.left)}, right: {repr(self.right)}';
 
 
+class LeftView:
+
+    def __init__(self, root_node=None):
+        self.root = root_node
+        self.left_view = [-1] * 10
+        self.create_left_view(self.root, 0)
+
+    def create_left_view(self, node=None, lvl=0):
+        if node.left is not None:
+            self.create_left_view(node.left, lvl+1)
+        elif node.right is not None:
+            self.create_left_view(node.right, lvl+1)
+        else:
+            self.left_view[lvl] = node.val
+
+    def __str__(self):
+        return f"LeftView of tree rooted at {repr(self.root)} is {self.left_view}"
+
+
 if __name__ == "__main__":
-    n2 = Node(2)
-    print(n2)
-    n3 = Node(3)
-    print(n3)
-    n1 = Node(1, Node(4), Node(5))
-    print(n1)
-    print(n1.left)
+    t1_root = Node(1, Node(2), Node(3))
+    print(t1_root)
+    print(t1_root.left)
+
+    print(LeftView(t1_root))
+    #print(LeftView(None))
+

@@ -18,12 +18,17 @@ class LeftView:
         self.create_left_view(self.root, 0)
 
     def create_left_view(self, node=None, lvl=0):
-        if node.left is not None:
-            self.create_left_view(node.left, lvl+1)
-        elif node.right is not None:
-            self.create_left_view(node.right, lvl+1)
-        else:
-            self.left_view[lvl] = node.val
+        if node is not None:
+            if self.left_view[lvl] == -1:
+                self.left_view[lvl] = node.val
+                #if node.left is not None:
+                self.create_left_view(node.left, lvl+1)
+                #if node.right is not None:
+                self.create_left_view(node.right, lvl+1)
+                #else:
+                    # no left or right child nodes
+                #    pass
+
 
     def __str__(self):
         return f"LeftView of tree rooted at {repr(self.root)} is {self.left_view}"
@@ -33,7 +38,16 @@ if __name__ == "__main__":
     t1_root = Node(1, Node(2), Node(3))
     print(t1_root)
     print(t1_root.left)
-
     print(LeftView(t1_root))
-    #print(LeftView(None))
 
+    print()
+    print(LeftView(None))
+
+    print()
+    t2_root = Node(1, Node(2, Node(4), Node(5)), Node(3))
+    print(LeftView(t2_root))
+
+    print()
+    t3_root = Node(1, Node(2, None, Node(5)), Node(3, Node(6, None, Node(7))))
+    #t3_root = Node(1, Node(2, None, None), Node(3, Node(6, None, Node(7))))
+    print(LeftView(t3_root))

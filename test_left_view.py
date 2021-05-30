@@ -1,5 +1,5 @@
 import pytest
-from bin_tree_view import *
+from bin_tree_view import Node, LeftView
 
 
 def test_null_tree():

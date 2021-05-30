@@ -21,14 +21,8 @@ class LeftView:
         if node is not None:
             if self.left_view[lvl] == -1:
                 self.left_view[lvl] = node.val
-            #if node.left is not None:
             self.create_left_view(node.left, lvl+1)
-            #if node.right is not None:
             self.create_left_view(node.right, lvl+1)
-                #else:
-                    # no left or right child nodes
-                #    pass
-
 
     def __str__(self):
         return f"LeftView of tree rooted at {repr(self.root)} is {self.left_view}"
